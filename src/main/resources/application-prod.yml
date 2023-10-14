@@ -1,0 +1,26 @@
+# 线上配置文件
+# 注意开源时这个文件不要提交、或者不要填真实配置
+spring:
+  # DataSource Config
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yupao?useSSL=false
+    username: root
+    password: 123456
+  redis:
+    port: 6380
+    host: 127.0.0.1
+    password: 123456
+    database: 1
+server:
+  address: 0.0.0.0
+  port: 8080
+  servlet:
+    context-path: /api
+    session:
+      cookie:
+        domain: 101.42.24.244
+
+
+
+# [编程知识星球](https://yupi.icu) 零基础快速入门编程，不走弯路！30+ 原创学习路线和专栏、1000+ 编程精华文章、500+ 编程学习指南、20T+ 编程资源汇总
