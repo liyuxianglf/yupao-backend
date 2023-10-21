@@ -2,6 +2,9 @@ package com.yx.exception;
 
 import com.yx.common.ErrorCode;
 
+/**
+ * 自定义异常类
+ */
 public class BusinessException extends RuntimeException{
 
     /**

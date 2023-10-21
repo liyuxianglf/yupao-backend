@@ -17,6 +17,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 缓存预热任务
+ */
 @Component
 @Slf4j
 public class PreCacheJob {
@@ -28,10 +31,10 @@ public class PreCacheJob {
     @Resource
     RedissonClient redissonClient;
 
-    //只给重点用户做缓存预热，
-    private List<Long> mainUserList = Arrays.asList(1l, 1195006l);
+    //重点用户，
+    private List<Long> mainUserList = Arrays.asList(1l);
 
-    @Scheduled(cron = "0 45 21 * * *")
+    @Scheduled(fixedDelay = 5,timeUnit = TimeUnit.MINUTES)
     public void doCacheRecommendUser() {
         log.info("执行定时任务。。。");
         RLock lock = redissonClient.getLock("yupao:precachejob:docache:lock");
@@ -46,7 +49,7 @@ public class PreCacheJob {
                     ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
                     // 写缓存
                     try {
-                        valueOperations.set(redisKey, userPage, 30000, TimeUnit.MILLISECONDS);
+                        valueOperations.set(redisKey, userPage, 5, TimeUnit.MINUTES);
                     } catch (Exception e) {
                         log.error("redis set key error", e);
                     }
@@ -55,7 +58,7 @@ public class PreCacheJob {
         } catch (InterruptedException e) {
             log.error("doCacheRecommendUser error", e);
         } finally {
-            // 只能释放自己的锁
+            // 只释放自己的锁
             if (lock.isHeldByCurrentThread()) {
                 System.out.println("unLock: " + Thread.currentThread().getId());
                 lock.unlock();

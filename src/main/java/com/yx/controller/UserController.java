@@ -146,7 +146,7 @@ public class UserController {
     }
 
     /**
-     * 首页推荐用户信息
+     * 首页推荐用户
      * @param pageSize
      * @param pageNum
      * @param request
@@ -158,7 +158,7 @@ public class UserController {
         if (loginUser == null) {
             throw new BusinessException(ErrorCode.NOT_LOGIN);
         }
-        String redisKey = String.format("yupao:user:recommend:%s", loginUser.getId());
+        String redisKey = String.format("yupao:user:recommend");
         Page<User> userPage = (Page<User>) redisTemplate.opsForValue().get(redisKey);
         if (userPage != null) {
             return ResultUtils.success(userPage);

@@ -33,15 +33,12 @@ public class ExcelDomainUser {
     @ExcelProperty("密码")
     private String userPassword;
 
-
     @ExcelProperty("电话")
     private String phone;
 
 
     @ExcelProperty("邮箱")
     private String email;
-
-
 
     @ExcelProperty("星球编号")
     private String planetCode;
