@@ -158,7 +158,7 @@ public class UserController {
         if (loginUser == null) {
             throw new BusinessException(ErrorCode.NOT_LOGIN);
         }
-        String redisKey = String.format("yupao:user:recommend");
+        String redisKey = String.format("yupao:user:recommend:%s",loginUser.getId());
         Page<User> userPage = (Page<User>) redisTemplate.opsForValue().get(redisKey);
         if (userPage != null) {
             return ResultUtils.success(userPage);

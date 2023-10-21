@@ -24,6 +24,7 @@ import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -135,10 +136,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         }
         // 3. 用户脱敏
         User safetyUser = getSafetyUser(user);
+        Gson gson = new Gson();
         // 4. 记录用户的登录态
+        HttpSession session = request.getSession();
         request.getSession().setAttribute(USER_LOGIN_STATE,safetyUser);
         return safetyUser;
     }
+
+
 
 
     /**

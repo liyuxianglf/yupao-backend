@@ -3,25 +3,24 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ***
-    username: ***
-    password: ***
+    url: jdbc:mysql://localhost:3306/yupao?useSSL=false
+    username: root
+    password: yuxi@sql666
   redis:
-    port:  ***
-    host:  ***
-    password:  ***
-    database:  ***
+    port: 6380
+    host: 127.0.0.1
+    password: yuxi666@@
+    database: 1
 server:
-  address:  ***
+  address: 0.0.0.0
   port: 8080
   servlet:
-    context-path:  ***
+    context-path: /api
     session:
       cookie:
-        domain:  ***
+        domain: 101.42.24.244
         same-site: lax
         secure: false
         http-only: true
-
 
 
