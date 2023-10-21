@@ -3,30 +3,30 @@ spring:
     name: yupao-backend-master
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.199.131:3306/yupao?useSSL=false
-    username: root
-    password: 123456
+    url:  ***
+    username:  ***
+    password:  ***
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
   redis:
-    port: 6380
-    host: 192.168.199.131
-    password: 123456
-    database: 1
+    port:  ***
+    host:  ***
+    password:  ***
+    database:  ***
   session:
-    timeout: 86400
+    timeout:  ***
     storeType: redis
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-Zone: Asia/Shanghai
 server:
-  port: 8080
+  port:  ***
   servlet:
-    context-path: /api
+    context-path:  ***
     session:
       cookie:
-        domain: localhost
+        domain:  ***
         same-site: lax
         secure: false
         http-only: true
