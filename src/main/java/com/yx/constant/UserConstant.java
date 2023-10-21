@@ -1,8 +1,19 @@
 package com.yx.constant;
 
+/**
+ * 用户常量
+ */
 public interface UserConstant {
+    /**
+     * 加密使用的盐
+     */
     String salt = "yx";
+
+    /**
+     * 用户登录态键
+     */
     String USER_LOGIN_STATE = "userLoginState";
+
     /**
      * 默认权限
      */

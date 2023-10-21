@@ -1,6 +1,6 @@
 package com.yx.mapper;
 
-import com.yx.domain.User;
+import com.yx.model.domain.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

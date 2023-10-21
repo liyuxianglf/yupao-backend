@@ -4,9 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yx.common.ErrorCode;
-import com.yx.domain.Team;
-import com.yx.domain.User;
-import com.yx.domain.UserTeam;
+import com.yx.model.domain.Team;
+import com.yx.model.domain.User;
+import com.yx.model.domain.UserTeam;
 import com.yx.exception.BusinessException;
 import com.yx.model.enums.TeamStatusEnum;
 import com.yx.model.requestDto.*;
@@ -31,9 +31,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
- * @author lige
- * @description 针对表【team(队伍)】的数据库操作Service实现
- * @createDate 2023-10-07 19:10:32
+ * 队伍服务实现类
+ *
  */
 @Service
 public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team>
@@ -47,6 +46,12 @@ public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team>
     @Resource
     private RedissonClient redissonClient;
 
+    /**
+     * 创建队伍
+     * @param team
+     * @param loginUser
+     * @return  队伍Id
+     */
     @Override
     @Transactional
     public Long addTeam(Team team, User loginUser) {
@@ -106,7 +111,7 @@ public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team>
         if (!result || teamId == null) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "创建队伍失败");
         }
-//在用户队伍关系表中插入数据
+        //在用户队伍关系表中插入数据
         UserTeam userTeam = new UserTeam();
         userTeam.setTeamId(teamId);
         userTeam.setUserId(loginUser.getId());
@@ -118,6 +123,12 @@ public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team>
         return teamId;
     }
 
+    /**
+     * 查询队伍
+     * @param teamQuery
+     * @param request
+     * @return
+     */
     @Override
     public List<TeamUserVO> listTeams(TeamQuery teamQuery, HttpServletRequest request) {
         if (teamQuery == null) {
@@ -202,6 +213,12 @@ public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team>
         return teamUserVOList;
     }
 
+    /**
+     * 修改队伍信息
+     * @param teamUpdateRequest
+     * @param loginUser
+     * @return
+     */
     @Override
     public boolean updateTeam(TeamUpdateRequest teamUpdateRequest, User loginUser) {
         if (teamUpdateRequest == null) {
@@ -234,6 +251,12 @@ public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team>
         return b;
     }
 
+    /**
+     * 加入队伍
+     * @param teamJoinRequest
+     * @param loginUser
+     * @return
+     */
     @Override
     public boolean joinTeam(TeamJoinRequest teamJoinRequest, User loginUser) {
         if (teamJoinRequest == null) {
@@ -288,12 +311,11 @@ public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team>
                     if (teamUserNums>=team.getMaxNum()){
                         throw new BusinessException(ErrorCode.PARAMS_ERROR,"队伍已满");
                     }
-                    Thread.sleep(5000);
                     UserTeam userTeam = new UserTeam();
                     userTeam.setTeamId(teamId);
                     userTeam.setUserId(userId);
                     userTeam.setJoinTime(new Date());
-                   return userTeamService.save(userTeam);
+                    return userTeamService.save(userTeam);
                 }
             }
         } catch (InterruptedException e) {
@@ -308,6 +330,12 @@ public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team>
         }
     }
 
+    /**
+     * 删除队伍
+     * @param id
+     * @param loginUser
+     * @return
+     */
     @Override
     @Transactional
     public boolean deleteTeam(long id, User loginUser) {
@@ -356,6 +384,12 @@ public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team>
     }
 
 
+    /**
+     * 退出队伍
+     * @param teamQuitRequest
+     * @param loginUser
+     * @return
+     */
     @Override
     @Transactional
     public boolean quitTeam(TeamQuitRequest teamQuitRequest, User loginUser) {

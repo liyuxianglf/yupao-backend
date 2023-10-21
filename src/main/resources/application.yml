@@ -12,17 +12,25 @@ spring:
   redis:
     port: 6380
     host: 192.168.199.131
+    password: 123456
     database: 1
   session:
     timeout: 86400
     storeType: redis
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-Zone: Asia/Shanghai
 server:
   port: 8080
   servlet:
     context-path: /api
     session:
       cookie:
-        domain: 101.42.24.244
+        domain: localhost
+        same-site: lax
+        secure: false
+        http-only: true
+
 
 
 mybatis-plus:

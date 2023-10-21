@@ -7,6 +7,9 @@ import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * Excel数据封装对象
+ */
 @Data
 public class ExcelDomainUser {
 

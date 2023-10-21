@@ -3,16 +3,17 @@ package com.yx.once;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.read.listener.ReadListener;
 import com.alibaba.excel.util.ListUtils;
-import com.yx.domain.User;
-import com.yx.service.UserService;
+import com.yx.model.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * 定义Excel监听器用于获取excel数据
+ */
 @Slf4j
 public class ExcelListenerUser implements ReadListener<ExcelDomainUser> {
 
@@ -37,7 +38,7 @@ public class ExcelListenerUser implements ReadListener<ExcelDomainUser> {
     /**
      * 这个每一条数据解析都会来调用
      *
-     * @param data    one row value. Is is same as {@link AnalysisContext#readRowHolder()}
+     * @param data    one row value.
      * @param context
      */
     @Override
@@ -64,7 +65,7 @@ public class ExcelListenerUser implements ReadListener<ExcelDomainUser> {
         // 这里也要保存数据，确保最后遗留的数据也存储到数据库
         saveData();
         CompletableFuture.allOf(futureList.toArray(new CompletableFuture[]{})).join();
-//        log.info("所有数据解析完成！");
+        log.info("所有数据解析完成！");
     }
 
     /**

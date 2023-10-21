@@ -8,7 +8,6 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 
 /**
  * RedisTemplate 配置
- *
  */
 @Configuration
 public class RedisTemplateConfig {

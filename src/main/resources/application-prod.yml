@@ -20,6 +20,9 @@ server:
     session:
       cookie:
         domain: 101.42.24.244
+        same-site: lax
+        secure: false
+        http-only: true
 
 
 

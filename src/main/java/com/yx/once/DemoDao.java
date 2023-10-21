@@ -1,15 +1,16 @@
 package com.yx.once;
 
-import com.yx.domain.User;
+import com.yx.model.domain.User;
 import com.yx.service.UserService;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StopWatch;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
+/**
+ * 用于将excel中的数据导入数据库
+ */
 @Component
 public class DemoDao {
     @Resource

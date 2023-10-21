@@ -2,12 +2,11 @@ package com.yx.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yx.common.BaseResponse;
-import com.yx.common.DeleteRequest;
 import com.yx.common.ErrorCode;
 import com.yx.common.ResultUtils;
-import com.yx.domain.Team;
-import com.yx.domain.User;
-import com.yx.domain.UserTeam;
+import com.yx.model.domain.Team;
+import com.yx.model.domain.User;
+import com.yx.model.domain.UserTeam;
 import com.yx.exception.BusinessException;
 import com.yx.model.requestDto.*;
 import com.yx.model.vo.TeamUserVO;
@@ -22,9 +21,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * 队伍接口
+ */
 @RestController
 @RequestMapping("/team")
 @Slf4j
@@ -36,7 +37,12 @@ public class TeamController {
     @Resource
     private UserTeamService userTeamService;
 
-
+    /**
+     * 创建队伍
+     * @param teamAddRequest    创建队伍请求体
+     * @param request
+     * @return
+     */
     @PostMapping("/add")
     public BaseResponse<Long> addTeam(@RequestBody TeamAddRequest teamAddRequest, HttpServletRequest request) {
         if (teamAddRequest == null) {
@@ -49,6 +55,12 @@ public class TeamController {
         return ResultUtils.success(teamId);
     }
 
+    /**
+     * 查询队伍
+     * @param teamQuery
+     * @param request
+     * @return
+     */
     @GetMapping("/list")
     public BaseResponse<List<TeamUserVO>> listTeams(TeamQuery teamQuery, HttpServletRequest request) {
         if (teamQuery == null) {
@@ -61,6 +73,12 @@ public class TeamController {
         return ResultUtils.success(teamUserVOList);
     }
 
+    /**
+     * 修改队伍信息
+     * @param teamUpdateRequest
+     * @param request
+     * @return
+     */
     @PostMapping("/update")
     public BaseResponse<Boolean> updateTeam(@RequestBody TeamUpdateRequest teamUpdateRequest, HttpServletRequest request) {
         if (teamUpdateRequest == null) {
@@ -77,6 +95,11 @@ public class TeamController {
         throw new BusinessException(ErrorCode.SYSTEM_ERROR, "更新失败");
     }
 
+    /**
+     * 根据队伍Id获取某个队伍信息
+     * @param id
+     * @return
+     */
     @GetMapping("/get")
     public BaseResponse<Team> getTeamById(long id) {
         if (id <= 0) {
@@ -89,6 +112,12 @@ public class TeamController {
         return ResultUtils.success(team);
     }
 
+    /**
+     * 加入队伍
+     * @param teamJoinRequest
+     * @param request
+     * @return
+     */
     @PostMapping("/join")
     public BaseResponse<Boolean> joinTeam(@RequestBody TeamJoinRequest teamJoinRequest, HttpServletRequest request) {
         if (teamJoinRequest == null) {
@@ -102,6 +131,12 @@ public class TeamController {
         return ResultUtils.success(result);
     }
 
+    /**
+     * 删除队伍
+     * @param deleteRequest
+     * @param request
+     * @return
+     */
     @PostMapping("/delete")
     public BaseResponse<Boolean> deleteTeam(@RequestBody DeleteRequest deleteRequest, HttpServletRequest request) {
         if (deleteRequest == null || deleteRequest.getId() <= 0) {
@@ -116,6 +151,12 @@ public class TeamController {
         return ResultUtils.success(result);
     }
 
+    /**
+     * 退出队伍
+     * @param teamQuitRequest
+     * @param request
+     * @return
+     */
     @PostMapping("/quit")
     public BaseResponse<Boolean> quitTeam(@RequestBody TeamQuitRequest teamQuitRequest, HttpServletRequest request) {
         if (teamQuitRequest==null){

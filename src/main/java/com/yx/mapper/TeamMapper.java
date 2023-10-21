@@ -1,6 +1,6 @@
 package com.yx.mapper;
 
-import com.yx.domain.Team;
+import com.yx.model.domain.Team;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
