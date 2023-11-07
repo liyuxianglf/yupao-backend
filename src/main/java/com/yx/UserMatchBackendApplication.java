@@ -11,10 +11,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @MapperScan("com.yx.mapper")
 @EnableScheduling
-public class UserCenterBackendApplication {
+public class UserMatchBackendApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UserCenterBackendApplication.class, args);
+        SpringApplication.run(UserMatchBackendApplication.class, args);
     }
 
 }
