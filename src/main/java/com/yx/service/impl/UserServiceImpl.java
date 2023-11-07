@@ -46,7 +46,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Resource
     UserMapper userMapper;
 
-
+@Resource
+Gson gson;
     /**
      * 用户注册
      * @param userRegisterRequest   用户注册请求体
@@ -136,7 +137,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         }
         // 3. 用户脱敏
         User safetyUser = getSafetyUser(user);
-        Gson gson = new Gson();
         // 4. 记录用户的登录态
         HttpSession session = request.getSession();
         request.getSession().setAttribute(USER_LOGIN_STATE,safetyUser);
@@ -216,7 +216,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         }
         List<User> userList = userMapper.selectList(null);
         userList = Optional.ofNullable(userList).orElse(new ArrayList<User>());
-        Gson gson = new Gson();
         List<User> userResList = userList.stream().filter(user -> {
             String tagJson = user.getTags();
             Set<String> tagSet = gson.fromJson(tagJson, new TypeToken<Set<String>>() {
@@ -243,7 +242,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         List<User> userList = this.list(lambdaWrapper);
         User lastedUser = this.getById(loginUser.getId());
         String tags = lastedUser.getTags();
-        Gson gson = new Gson();
+        
         List<String> tagList = gson.fromJson(tags, new TypeToken<List<String>>() {
         }.getType());
         List<Pair<User, Long>> list = new ArrayList<>();
@@ -291,7 +290,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (tags == null || tags.length() == 0) {
             return new ArrayList<>();
         }
-        Gson gson = new Gson();
         List<String> tagList = gson.fromJson(tags, new TypeToken<List<String>>() {
         }.getType());
         return tagList;
@@ -305,7 +303,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      */
     @Override
     public boolean updateUserTags(Long id,List<String> tagList) {
-        Gson gson = new Gson();
         String tagsJson = gson.toJson(tagList);
         User user = new User();
         user.setId(id);

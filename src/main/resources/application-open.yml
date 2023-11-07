@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: yupao-backend-master
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: #修改为自己的
+    username: #修改为自己的
+    password: #修改为自己的
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  redis:
+    port: #修改为自己的
+    host: #修改为自己的
+    password: #修改为自己的
+    database: #修改为自己的
+  session:
+    timeout: 86400
+    storeType: redis
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-Zone: Asia/Shanghai
+server:
+  port: #修改为自己的
+  address: #修改为自己的
+  servlet:
+    context-path: #修改为自己的
+    session:
+      cookie:
+        domain: #修改为自己的
+        same-site: lax
+        secure: false
+        http-only: true
+
+
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+
