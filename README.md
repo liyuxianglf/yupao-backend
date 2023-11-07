@@ -27,10 +27,13 @@
 ### 六、技术选型
 前端
 - Vue3 + Vant4 UI 移动端组件库
+
 后端
 - SpringBoot + Mybatis + MyBatis-Plus 
+
 后端组件
 - Redisson + EasyExcel + Gson + Knife4j + Spring-session-data-redis 
+
 中间件
 - MySQL + Redis + Nginx
 ### 七、后端部署
@@ -70,7 +73,7 @@
 ### 九、部分界面展示
  **1. 登录注册页面** 
 
-![输入图片说明](image.png) 
+![输入图片说明](image1.png)
 
  **2. 首次注册之后添加自己的标签，可以选择直接跳过** 
 
@@ -78,19 +81,19 @@
 
  **3. 首页** 
 
-![输入图片说明](image.png) 
+![输入图片说明](image2.png)
 
  **4. 队伍页面** 
 
-![输入图片说明](image.png) 
+![输入图片说明](image3.png)
 
  **5. 根据标签搜索用户** 
 
-![输入图片说明](image.png)
+![输入图片说明](image4.png)
 
  **6. 个人中心** 
 
-![输入图片说明](image.png) 
+![输入图片说明](image5.png)
 
 
 
