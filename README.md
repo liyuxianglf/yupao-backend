@@ -72,27 +72,27 @@
 ### 九、部分界面展示
  **1. 登录注册页面** 
 
-![输入图片说明](image1.png)
+![输入图片说明](readmeimage/image1.png)
 
  **2. 首次注册之后添加自己的标签，可以选择直接跳过** 
 
-![输入图片说明](image6.png)
+![输入图片说明](readmeimage/image6.png)
 
  **3. 首页** 
 
-![输入图片说明](image2.png)
+![输入图片说明](readmeimage/image2.png)
 
  **4. 队伍页面** 
 
-![输入图片说明](image3.png)
+![输入图片说明](readmeimage/image3.png)
 
  **5. 根据标签搜索用户** 
 
-![输入图片说明](image4.png)
+![输入图片说明](readmeimage/image4.png)
 
  **6. 个人中心** 
 
-![输入图片说明](image5.png)
+![输入图片说明](readmeimage/image5.png)
 
 
 
