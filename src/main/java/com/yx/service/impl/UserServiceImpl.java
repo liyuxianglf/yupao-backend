@@ -34,9 +34,7 @@ import java.util.stream.Collectors;
 import static com.yx.constant.UserConstant.USER_LOGIN_STATE;
 
 /**
- * @author lige
- * @description 针对表【user(用户)】的数据库操作Service实现
- * @createDate 2023-09-12 11:16:38
+ * 用户服务实现类
  */
 @Service
 @Slf4j
