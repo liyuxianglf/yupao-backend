@@ -72,27 +72,28 @@
 ### 九、部分界面展示
  **1. 登录注册页面** 
 
-![输入图片说明](readmeimage/image1.png)
+![图片](https://github.com/liyuxianglf/yupao-backend/assets/151162920/05245de2-4331-4e39-8ad6-1a6da42da181)
 
  **2. 首次注册之后添加自己的标签，可以选择直接跳过** 
 
-![输入图片说明](readmeimage/image6.png)
+![图片](https://github.com/liyuxianglf/yupao-backend/assets/151162920/624b6c17-ed0e-46ac-86ae-322dd0f42ed6)
 
  **3. 首页** 
 
-![输入图片说明](readmeimage/image2.png)
+![图片](https://github.com/liyuxianglf/yupao-backend/assets/151162920/5c3908b5-f878-4e41-bb96-8b21ed1bd2d6)
 
  **4. 队伍页面** 
 
-![输入图片说明](readmeimage/image3.png)
+![图片](https://github.com/liyuxianglf/yupao-backend/assets/151162920/e4495a93-8153-4f51-b109-9b441dd62857)
 
  **5. 根据标签搜索用户** 
 
-![输入图片说明](readmeimage/image4.png)
+![图片](https://github.com/liyuxianglf/yupao-backend/assets/151162920/8f7a4eb9-300c-40d0-acf8-04234d2c6ec4)
 
  **6. 个人中心** 
 
-![输入图片说明](readmeimage/image5.png)
+![图片](https://github.com/liyuxianglf/yupao-backend/assets/151162920/5cbfb833-dba3-4e22-a01e-901bde0b7f72)
+
 
 
 
